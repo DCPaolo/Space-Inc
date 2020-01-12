@@ -43,10 +43,10 @@ class WebSockets : WebSocketListener()  {
     }
 
     private fun start() {
-        val request = Request.Builder().url("ws://vps769278.ovh.net:8081 ").build()
-        val listener = EchoWebSocketListener()
-        val ws = client.newWebSocket(request, listener)
-        client.dispatcher().executorService().shutdown()
+        //val request = Request.Builder().url("ws://vps769278.ovh.net:8081 ").build()
+        //val listener = EchoWebSocketListener()
+        //val ws = client.newWebSocket(request, listener)
+        //client.dispatcher().executorService().shutdown()
     }
 }
 
