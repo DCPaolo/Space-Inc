@@ -17,29 +17,29 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        showUserByName()
-        showAllUsers()
+//        showUserByName()
+//        showAllUsers()
     }
 
-    private fun showUserById() {
-        viewModel.getUserId.observe(this, Observer {
-            firstTextView.text = "User connected : " + it.name
-        })
-    }
-
-    private fun showUserByName() {
-        viewModel.getUserName.observe(this, Observer {
-            firstTextView.text = "User connected : " + it.id
-        })
-    }
-
-    private fun showAllUsers() {
-        secondTextView.text = ""
-        viewModel.getAllUsers.observe(this, Observer {
-            for (user in it) {
-                secondTextView.append("id : " + user.id + ", name : " + user.name + "\n")
-            }
-        })
-    }
+//    private fun showUserById() {
+//        viewModel.getUserId.observe(this, Observer {
+//            firstTextView.text = "User connected : " + it.name
+//        })
+//    }
+//
+//    private fun showUserByName() {
+//        viewModel.getUserName.observe(this, Observer {
+//            firstTextView.text = "User connected : " + it.id
+//        })
+//    }
+//
+//    private fun showAllUsers() {
+//        secondTextView.text = ""
+//        viewModel.getAllUsers.observe(this, Observer {
+//            for (user in it) {
+//                secondTextView.append("id : " + user.id + ", name : " + user.name + "\n")
+//            }
+//        })
+//    }
 }
 
