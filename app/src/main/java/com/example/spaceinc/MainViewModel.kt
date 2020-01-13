@@ -14,6 +14,11 @@ class MainViewModel : ViewModel() {
         emit(userId)
     }
 
+    val getUserName = liveData(Dispatchers.IO) {
+        val userName = repository.getUserByName("romain")
+        emit(userName)
+    }
+
     val getAllUsers = liveData(Dispatchers.IO) {
         val allUsers = repository.getAllUsers()
         emit(allUsers)

@@ -15,6 +15,10 @@ interface WebService {
 
     @GET("/api/users")
     suspend fun getAllUsers(): List<User>
+
+    @GET("/api/user/find/{name}")
+    suspend fun getUserByName(@Path(value = "name") userName: String): User
+
 }
 
 

@@ -17,13 +17,19 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        showOneUser()
+        showUserByName()
         showAllUsers()
     }
 
-    private fun showOneUser() {
+    private fun showUserById() {
         viewModel.getUserId.observe(this, Observer {
             firstTextView.text = "User connected : " + it.name
+        })
+    }
+
+    private fun showUserByName() {
+        viewModel.getUserName.observe(this, Observer {
+            firstTextView.text = "User connected : " + it.id
         })
     }
 
