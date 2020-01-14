@@ -7,4 +7,8 @@
         android:id="@+id/scoreFragment"
         android:name="com.example.spaceinc.fragments.score.ScoreFragment"
         android:label="ScoreFragment" />
+    <fragment
+        android:id="@+id/waittingRoomFragment"
+        android:name="com.example.spaceinc.waittingRoom.WaittingRoomFragment"
+        android:label="WaittingRoomFragment" />
 </navigation>
