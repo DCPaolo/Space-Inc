@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.LoginFragmentBinding
+import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : Fragment() {
 
@@ -47,7 +48,7 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = this
 
 
-        // Observer for the Game finished event
+        // Observer
         viewModel.validConnexion.observe(this, Observer<Boolean> { hasFinished ->
             if (hasFinished) connexionOk()
         })
@@ -58,17 +59,23 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
     /**
-     * Called when the game is finished
+     * Called when connexion is valid
      */
     private fun connexionOk() {
+        viewModel.connectUser("DarkSasuke95leBG")
+        redirectToScore()
+    }
+
+    fun redirectToScore() {
         Toast.makeText(activity, "Go to scores", Toast.LENGTH_SHORT).show()
         val action = LoginFragmentDirections.actionLoginToScrore()
+
         NavHostFragment.findNavController(this).navigate(action)
     }
+
 }
 
 

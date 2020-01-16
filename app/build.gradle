@@ -65,5 +65,6 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
-
-    implementation "androidx.lifecycle:lifecycle-common-java8:$version_lifecycle"}
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$version_retrofit"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$version_lifecycle"
+}

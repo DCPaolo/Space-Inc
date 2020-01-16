@@ -7,25 +7,25 @@ import com.example.spaceinc.network.UserRepository
 import kotlinx.coroutines.Dispatchers
 
 class ScoreViewModel : ViewModel() {
-    private val repository: UserRepository = UserRepository()
+    private val userRepository: UserRepository = UserRepository()
 
     val getUserId = liveData(Dispatchers.IO) {
-        val userId = repository.getUserById(5)
+        val userId = userRepository.getUserById(5)
         emit(userId)
     }
 
     val getUserName = liveData(Dispatchers.IO) {
-        val userName = repository.getUserByName("romain")
+        val userName = userRepository.getUserByName("romain")
         emit(userName)
     }
 
     val getAllUsers = liveData(Dispatchers.IO) {
-        val allUsers = repository.getAllUsers()
+        val allUsers = userRepository.getAllUsers()
         emit(allUsers)
     }
 
     val getUsersScore = liveData(Dispatchers.IO) {
-        val allUsers = repository.getAllUsers()
+        val allUsers = userRepository.getAllUsers()
         var allUsersSorted = allUsers.sortedWith(compareByDescending({ it.score }))
 
         emit(allUsersSorted)
