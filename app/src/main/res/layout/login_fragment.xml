@@ -49,7 +49,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:text="Connexion"
-            android:onClick="@{() -> loginViewModel.onClickConnexion()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_layout" />

@@ -2,31 +2,31 @@ package com.example.spaceinc.fragments.score
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.spaceinc.model.User
-import com.example.spaceinc.network.UserRepository
+import com.example.spaceinc.network.RetrofitClient
+import com.example.spaceinc.network.WebService
 import kotlinx.coroutines.Dispatchers
 
 class ScoreViewModel : ViewModel() {
-    private val userRepository: UserRepository = UserRepository()
+    var client: WebService = RetrofitClient.webservice
 
     val getUserId = liveData(Dispatchers.IO) {
-        val userId = userRepository.getUserById(5)
+        val userId = client.getUserById(5)
         emit(userId)
     }
 
     val getUserName = liveData(Dispatchers.IO) {
-        val userName = userRepository.getUserByName("romain")
+        val userName = client.getUserByName("romain")
         emit(userName)
     }
 
     val getAllUsers = liveData(Dispatchers.IO) {
-        val allUsers = userRepository.getAllUsers()
+        val allUsers = client.getAllUsers()
         emit(allUsers)
     }
 
     val getUsersScore = liveData(Dispatchers.IO) {
-        val allUsers = userRepository.getAllUsers()
-        var allUsersSorted = allUsers.sortedWith(compareByDescending({ it.score }))
+        val allUsers = client.getAllUsers()
+        var allUsersSorted = allUsers.sortedWith(compareByDescending { it.score })
 
         emit(allUsersSorted)
     }

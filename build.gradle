@@ -12,6 +12,7 @@ buildscript {
         //version_recyclerview = "1.0.0"
         version_retrofit = "2.7.1"
         version_moshi = "1.9.2"
+        version_okhttp = "4.3.1"
     }
 
     repositories {

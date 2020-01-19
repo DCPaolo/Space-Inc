@@ -5,16 +5,21 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import com.example.spaceinc.model.User
 import com.example.spaceinc.model.UserPost
-import com.example.spaceinc.network.UserRepository
-import kotlinx.coroutines.Dispatchers
+import com.example.spaceinc.network.RetrofitClient
+import com.example.spaceinc.network.WebService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginViewModel : ViewModel() {
-    private val userRepository: UserRepository = UserRepository()
+    private val webService: WebService = RetrofitClient.webservice
 
-    private var labelUser: MutableList<String>? = null
+
+    private var _labelUser: MutableLiveData<String>? = null
+    var labelUser: LiveData<String>? = null
+        get() = _labelUser
 
     private val _validConnexion = MutableLiveData<Boolean>()
     val validConnexion: LiveData<Boolean>
@@ -23,23 +28,35 @@ class LoginViewModel : ViewModel() {
 
     init {
         _validConnexion.value = false
+        _labelUser?.value = ""
     }
 
-    fun setLabel() {
-        Log.i("test", "test")
+    /**
+     * add new user in async task
+     */
+    fun onClickConnexion(loginText : String) {
+
+        if (loginText.isNotEmpty()) {
+            val creationUser = webService.createUser(UserPost(loginText.toLowerCase()))
+
+            creationUser?.enqueue(object : Callback<User?> {
+                override fun onResponse(call: Call<User?>, response: Response<User?>) {
+                    //redirectToScore()
+                    _validConnexion.value = true
+
+                    Handler().postDelayed({
+                        _validConnexion.value = false
+                    }, 1000)
+                }
+
+                override fun onFailure(call: Call<User?>, t: Throwable) {
+                    Log.e("test", "Error : $t")
+                }
+            })
+        }
+
     }
 
-    fun onClickConnexion() {
-        Log.i("test", "Click btn connexion ok")
-
-        Handler().postDelayed({
-            _validConnexion.value = false
-
-        }, 1000)
-
-        _validConnexion.value = true
-
-    }
 
 
 

@@ -2,16 +2,12 @@ package com.example.spaceinc.fragments.score
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.NavHostFragment
-
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.ScoreFragmentBinding
 import kotlinx.android.synthetic.main.score_fragment.*
@@ -19,28 +15,17 @@ import kotlinx.android.synthetic.main.score_fragment.*
 class ScoreFragment : Fragment() {
 
     private lateinit var binding: ScoreFragmentBinding
-
     private lateinit var viewModel: ScoreViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate view and obtain an instance of the binding class
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.score_fragment,
-            container,
-            false
-        )
-        Log.i("ScoreFragment", "Called ViewModelProviders.of")
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        // Inflate view and obtain an instance of the binding class
+        binding = DataBindingUtil.inflate(inflater, R.layout.score_fragment, container, false)
 
         // Get the viewModel
         viewModel = ViewModelProviders.of(this).get(ScoreViewModel::class.java)
 
-        // Set the viewmodel for databinding - this allows the bound layout access
-        // to all the data in the ViewModel
+        // Set the viewmodel for databinding
         binding.gameViewModel = viewModel
 
         showUserByName()
@@ -50,19 +35,21 @@ class ScoreFragment : Fragment() {
     }
 
 
-    /** Methods for updating the UI **/
+    /** Display id of the user connected **/
     private fun showUserById() {
         viewModel.getUserId.observe(this, Observer {
             firstTextView.text = "User connected : " + it.id
         })
     }
 
+    /** Display the name of the user connected **/
     private fun showUserByName() {
         viewModel.getUserName.observe(this, Observer {
             firstTextView.text = "User connected : " + it.name
         })
     }
 
+    /** Display all users **/
     private fun showAllUsers() {
         viewModel.getAllUsers.observe(this, Observer {
             for (user in it) {
@@ -71,6 +58,7 @@ class ScoreFragment : Fragment() {
         })
     }
 
+    /** Display all user sort by score **/
     private fun showBestUsers() {
         var position : Int = 0
 
@@ -81,24 +69,4 @@ class ScoreFragment : Fragment() {
             }
         })
     }
-
-//    private fun updateWordText() {
-//        binding.wordText.text = viewModel.word
-//
-//    }
-//
-//    private fun updateScoreText() {
-//        binding.scoreText.text = viewModel.score.toString()
-//    }
-
-    /**
-     * Called when the game is finished
-     */
-//    private fun gameFinished() {
-//        Toast.makeText(activity, "Game has just finished", Toast.LENGTH_SHORT).show()
-//        val action = ScoreFragmentDirections.actionGameToScore()
-//        action.score = viewModel.score
-//        NavHostFragment.findNavController(this).navigate(action)
-//    }
-
 }
