@@ -53,13 +53,13 @@ class ScoreFragment : Fragment() {
     /** Methods for updating the UI **/
     private fun showUserById() {
         viewModel.getUserId.observe(this, Observer {
-            firstTextView.text = "User connected : " + it.name
+            firstTextView.text = "User connected : " + it.id
         })
     }
 
     private fun showUserByName() {
         viewModel.getUserName.observe(this, Observer {
-            firstTextView.text = "User connected : " + it.id
+            firstTextView.text = "User connected : " + it.name
         })
     }
 

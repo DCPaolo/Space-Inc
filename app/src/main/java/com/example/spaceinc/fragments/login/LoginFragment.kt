@@ -12,10 +12,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.LoginFragmentBinding
+import com.example.spaceinc.model.User
+import com.example.spaceinc.model.UserPost
+import com.example.spaceinc.network.RetrofitClient
+import com.example.spaceinc.network.WebService
 import kotlinx.android.synthetic.main.login_fragment.*
+import retrofit2.*
 
 class LoginFragment : Fragment() {
 
@@ -28,7 +32,6 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //return inflater.inflate(R.layout.login_fragment, container, false)
 
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(
@@ -38,7 +41,6 @@ class LoginFragment : Fragment() {
             false
         )
 
-        // Log.i("LoginFragment", "Called ViewModelProviders.of")
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
 
@@ -49,8 +51,8 @@ class LoginFragment : Fragment() {
 
 
         // Observer
-        viewModel.validConnexion.observe(this, Observer<Boolean> { hasFinished ->
-            if (hasFinished) connexionOk()
+        viewModel.validConnexion.observe(this, Observer<Boolean> { isOk ->
+            if (isOk) addUser()
         })
 
         return binding.root
@@ -61,12 +63,32 @@ class LoginFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
     }
 
+    var webService: WebService = RetrofitClient.webservice
+
     /**
-     * Called when connexion is valid
+     * add new user in async task
      */
-    private fun connexionOk() {
-        viewModel.connectUser("DarkSasuke95leBG")
-        redirectToScore()
+    fun addUser(){
+        var loginText = login.text.toString()
+
+        if (!loginText.isEmpty()) {
+            val creationUser = webService.createUser(UserPost(loginText.toLowerCase()))
+
+            creationUser?.enqueue(object : Callback<User?> {
+                override fun onResponse(call: Call<User?>, response: Response<User?>) {
+                    val newUser = response.body()
+                    newUser?.let {
+                        Log.d("Api", "Player Registered :  ${it.name}")
+                    }
+                    redirectToScore()
+                }
+
+                override fun onFailure(call: Call<User?>, t: Throwable) {
+                    Log.e("Api", "Error : $t")
+                }
+            })
+            login.text.clear()
+        }
     }
 
     fun redirectToScore() {

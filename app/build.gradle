@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-//apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs"
 
 android {
     dataBinding {
         enabled = true
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -61,6 +62,7 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.9.2")
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"

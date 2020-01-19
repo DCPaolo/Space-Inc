@@ -1,6 +1,7 @@
 package com.example.spaceinc.network
 
 import com.example.spaceinc.model.User
+import com.example.spaceinc.model.UserPost
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -18,8 +19,9 @@ interface WebService {
     @GET("/api/user/find/{name}")
     suspend fun getUserByName(@Path(value = "name") userName: String): User
 
+
     @POST("/api/user/register")
-    fun createUser(@Body name: String?): Call<User?>?
+    fun createUser(@Body user: UserPost?): Call<User?>?
 }
 
 

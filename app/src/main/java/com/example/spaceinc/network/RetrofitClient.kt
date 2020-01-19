@@ -15,7 +15,6 @@ object RetrofitClient {
         Retrofit.Builder()
             .baseUrl("http://vps769278.ovh.net/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build().create(WebService::class.java)
     }
 }
