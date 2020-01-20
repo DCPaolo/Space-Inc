@@ -19,8 +19,8 @@
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" >
         <action
-            android:id="@+id/action_login_to_scrore"
-            app:destination="@+id/scoreFragment"
+            android:id="@+id/action_login_to_creationroom"
+            app:destination="@+id/creationRoomFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:launchSingleTop="true"
@@ -28,5 +28,18 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/loginFragment"
             app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/creationRoomFragment"
+        android:name="com.example.spaceinc.fragments.creationRoom.creationRoomFragment"
+        android:label="creationRoomFragment" >
+        <action
+            android:id="@+id/action_creationRoomFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/creationRoomFragment" />
     </fragment>
 </navigation>

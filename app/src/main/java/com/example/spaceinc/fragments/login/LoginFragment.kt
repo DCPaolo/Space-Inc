@@ -35,7 +35,7 @@ class LoginFragment : Fragment() {
         // Observer
         viewModel.validConnexion.observe(this, Observer<Boolean> { isOk ->
             if (isOk) {
-                redirectToScore()
+                redirectToCreationRoom()
                 login.text.clear()
             }
         })
@@ -50,9 +50,9 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun redirectToScore() {
-        Toast.makeText(activity, "Go to scores", Toast.LENGTH_SHORT).show()
-        val action = LoginFragmentDirections.actionLoginToScrore()
+    private fun redirectToCreationRoom() {
+        Toast.makeText(activity, "Go to creation rooms", Toast.LENGTH_SHORT).show()
+        val action = LoginFragmentDirections.actionLoginToCreationroom()
 
         NavHostFragment.findNavController(this).navigate(action)
     }
