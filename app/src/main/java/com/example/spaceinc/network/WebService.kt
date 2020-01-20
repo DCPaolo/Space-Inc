@@ -19,7 +19,6 @@ interface WebService {
     @GET("/api/user/find/{name}")
     suspend fun getUserByName(@Path(value = "name") userName: String): User
 
-
     @POST("/api/user/register")
     fun createUser(@Body user: UserPost?): Call<User?>?
 }
