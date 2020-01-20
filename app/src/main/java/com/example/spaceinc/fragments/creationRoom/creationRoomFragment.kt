@@ -17,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.CreationRoomFragmentBinding
+import com.example.spaceinc.databinding.WaitingRoomFragmentBinding
 import kotlinx.android.synthetic.main.create_room_popup.*
 import kotlinx.android.synthetic.main.create_room_popup.view.*
 import kotlinx.android.synthetic.main.creation_room_fragment.*
@@ -67,10 +68,11 @@ class creationRoomFragment : Fragment() {
 
         val buttonCreateRoom = layoutPopUp.new_room_button
         buttonCreateRoom.setOnClickListener {
-            Log.i("test", "freoifkreiof")
             var roomName = new_room_name?.text.toString()
 
             //request websocket to join this room with id user
+
+            redirectToWaitingRoom()
         }
     }
 
@@ -92,6 +94,7 @@ class creationRoomFragment : Fragment() {
 
                 newRoom.setOnClickListener {
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
+                    redirectToWaitingRoom()
                 }
 
                 allRooms.addView(newRoom)
@@ -105,6 +108,15 @@ class creationRoomFragment : Fragment() {
             val action = creationRoomFragmentDirections.actionCreationRoomFragmentToScoreFragment()
             NavHostFragment.findNavController(this).navigate(action)
         }
+    }
+
+    private fun redirectToWaitingRoom() {
+//        if (findNavController().currentDestination?.id == R.id.waitingRoomFragment) {
+        Log.i("test", findNavController().currentDestination?.id.toString())
+        Log.i("test", R.id.waitingRoomFragment.toString())
+            val action = creationRoomFragmentDirections.actionCreationRoomFragmentToWaitingRoomFragment()
+            NavHostFragment.findNavController(this).navigate(action)
+//        }
     }
 
 
