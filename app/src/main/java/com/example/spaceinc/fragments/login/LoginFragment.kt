@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.LoginFragmentBinding
 import kotlinx.android.synthetic.main.login_fragment.*
@@ -51,11 +53,14 @@ class LoginFragment : Fragment() {
     }
 
     private fun redirectToCreationRoom() {
-        Toast.makeText(activity, "Go to creation rooms", Toast.LENGTH_SHORT).show()
-        val action = LoginFragmentDirections.actionLoginToCreationroom()
+        if (findNavController().currentDestination?.id == R.id.loginFragment) {
+            Toast.makeText(activity, "Go to creation rooms", Toast.LENGTH_SHORT).show()
+            val action = LoginFragmentDirections.actionLoginToCreationroom()
 
-        NavHostFragment.findNavController(this).navigate(action)
+            NavHostFragment.findNavController(this).navigate(action)
+        }
     }
+
 }
 
 

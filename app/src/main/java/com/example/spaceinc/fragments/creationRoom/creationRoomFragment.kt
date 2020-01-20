@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 
 import com.example.spaceinc.R
 import com.example.spaceinc.fragments.login.LoginFragmentDirections
@@ -38,10 +39,13 @@ class creationRoomFragment : Fragment() {
     }
 
     private fun redirectToScore() {
-        Toast.makeText(activity, "Go to scores", Toast.LENGTH_SHORT).show()
-        val action = creationRoomFragmentDirections.actionCreationRoomFragmentToScoreFragment()
+        if (findNavController().currentDestination?.id == R.id.creationRoomFragment) {
 
-        NavHostFragment.findNavController(this).navigate(action)
+            Toast.makeText(activity, "Go to scores", Toast.LENGTH_SHORT).show()
+            val action = creationRoomFragmentDirections.actionCreationRoomFragmentToScoreFragment()
+
+            NavHostFragment.findNavController(this).navigate(action)
+        }
     }
 
 }
