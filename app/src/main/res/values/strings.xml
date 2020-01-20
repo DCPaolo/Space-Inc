@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SpaceInc</string>
+    <string name="you_win">You win</string>
+    <string name="waiting_room">Waiting Room</string>
+    <string name="ready">Ready</string>
 </resources>
