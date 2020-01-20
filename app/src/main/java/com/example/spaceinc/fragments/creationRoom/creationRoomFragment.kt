@@ -1,5 +1,6 @@
 package com.example.spaceinc.fragments.creationRoom
 
+import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.CreationRoomFragmentBinding
+import kotlinx.android.synthetic.main.create_room_popup.*
+import kotlinx.android.synthetic.main.create_room_popup.view.*
 import kotlinx.android.synthetic.main.creation_room_fragment.*
 
 class creationRoomFragment : Fragment() {
@@ -46,6 +49,29 @@ class creationRoomFragment : Fragment() {
         score_button.setOnClickListener {
             redirectToScore()
         }
+
+        add_room_button.setOnClickListener {
+            popUpCreationRoom()
+        }
+
+
+
+    }
+
+    private fun popUpCreationRoom() {
+        val layoutPopUp = LayoutInflater.from(context).inflate(R.layout.create_room_popup, null)
+        val popUpAddRoom = AlertDialog.Builder(context)
+        popUpAddRoom.setTitle("Nom de la salle")
+        popUpAddRoom.setView(layoutPopUp)
+        popUpAddRoom.show()
+
+        val buttonCreateRoom = layoutPopUp.new_room_button
+        buttonCreateRoom.setOnClickListener {
+            Log.i("test", "freoifkreiof")
+            var roomName = new_room_name?.text.toString()
+
+            //request websocket to join this room with id user
+        }
     }
 
     /** Display all rooms **/
@@ -55,17 +81,16 @@ class creationRoomFragment : Fragment() {
 
             if (it.all?.isEmpty()!!) {
                 val noRoom = TextView(context)
-                noRoom.text = "Aucune salle ouverte pour le moment..."
+                noRoom.text = getString(R.string.no_room_active)
                 allRooms.addView(noRoom)
             }
 
             it.all?.forEach {room ->
                 var newRoom = Button(context)
                 newRoom.text = room.name
-                newRoom.setTag("join_room")
+                newRoom.tag = "join_room"
 
                 newRoom.setOnClickListener {
-                    Log.i("test", room.name)
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
                 }
 
