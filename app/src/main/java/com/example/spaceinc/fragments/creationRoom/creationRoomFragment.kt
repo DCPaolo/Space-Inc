@@ -54,9 +54,8 @@ class creationRoomFragment : Fragment() {
         viewModel.getAllRooms.observe(this, Observer {
 
             it.all?.forEach {room ->
-                allRooms.append("room : ${room} \n")
-                Log.i("test", room.toString())
-            }
+                allRooms.append("${room.name} \n")
+            } ?: allRooms.append("Aucune salle ouverte pour le moment...")
 
         })
     }

@@ -16,7 +16,7 @@
         tools:context=".MainActivity">
 
         <TextView
-            android:id="@+id/titleTextView"
+            android:id="@+id/title_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/firstTextView"
+            android:id="@+id/user_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            app:layout_constraintTop_toBottomOf="@+id/title_score"
             tools:text="User : Test" />
 
         <androidx.core.widget.NestedScrollView
@@ -47,7 +47,7 @@
             android:layout_marginTop="150dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstTextView">
+            app:layout_constraintTop_toBottomOf="@+id/user_score">
 
             <TextView
                 android:id="@+id/secondTextView"

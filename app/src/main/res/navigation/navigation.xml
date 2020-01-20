@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/winingFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/scoreFragment"
         android:name="com.example.spaceinc.fragments.score.ScoreFragment"
         android:label="ScoreFragment" />
     <fragment
-        android:id="@+id/waittingRoomFragment"
+        android:id="@+id/waitingRoomFragment"
         android:name="com.example.spaceinc.fragments.waitingRoom.WaitingRoomFragment"
-        android:label="WaittingRoomFragment" />
+        android:label="WaitingRoomFragment" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.spaceinc.fragments.login.LoginFragment"
@@ -41,6 +41,9 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/creationRoomFragment" />
+        <action
+            android:id="@+id/action_creationRoomFragment_to_waitingRoomFragment"
+            app:destination="@id/waitingRoomFragment" />
     </fragment>
     <fragment
         android:id="@+id/winingFragment"
