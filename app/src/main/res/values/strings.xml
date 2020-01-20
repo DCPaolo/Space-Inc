@@ -12,4 +12,5 @@
     <string name="no_room_active">Aucune salle ouverte pour le moment...</string>
     <string name="new_room_popup_button">Créer</string>
     <string name="new_room_name_placeholder">Nom de la salle</string>
+    <string name="pseudo_connexion">Pseudo</string>
 </resources>
