@@ -54,7 +54,6 @@ class LoginFragment : Fragment() {
 
     private fun redirectToCreationRoom() {
         if (findNavController().currentDestination?.id == R.id.loginFragment) {
-            Toast.makeText(activity, "Go to creation rooms", Toast.LENGTH_SHORT).show()
             val action = LoginFragmentDirections.actionLoginToCreationroom()
 
             NavHostFragment.findNavController(this).navigate(action)

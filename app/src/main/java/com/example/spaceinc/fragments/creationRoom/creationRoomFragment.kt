@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -14,8 +16,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.CreationRoomFragmentBinding
-import com.example.spaceinc.model.Room
-import com.example.spaceinc.model.RoomList
 import kotlinx.android.synthetic.main.creation_room_fragment.*
 
 class creationRoomFragment : Fragment() {
@@ -53,17 +53,30 @@ class creationRoomFragment : Fragment() {
 
         viewModel.getAllRooms.observe(this, Observer {
 
-            it.all?.forEach {room ->
-                allRooms.append("${room.name} \n")
-            } ?: allRooms.append("Aucune salle ouverte pour le moment...")
+            if (it.all?.isEmpty()!!) {
+                val noRoom = TextView(context)
+                noRoom.text = "Aucune salle ouverte pour le moment..."
+                allRooms.addView(noRoom)
+            }
 
+            it.all?.forEach {room ->
+                var newRoom = Button(context)
+                newRoom.text = room.name
+                newRoom.setTag("join_room")
+
+                newRoom.setOnClickListener {
+                    Log.i("test", room.name)
+                    Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
+                }
+
+                allRooms.addView(newRoom)
+            }
         })
+
     }
 
     private fun redirectToScore() {
         if (findNavController().currentDestination?.id == R.id.creationRoomFragment) {
-
-            Toast.makeText(activity, "Go to scores", Toast.LENGTH_SHORT).show()
             val action = creationRoomFragmentDirections.actionCreationRoomFragmentToScoreFragment()
             NavHostFragment.findNavController(this).navigate(action)
         }
