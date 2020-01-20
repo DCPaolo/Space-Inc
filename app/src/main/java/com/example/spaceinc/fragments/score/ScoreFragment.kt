@@ -26,7 +26,7 @@ class ScoreFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(ScoreViewModel::class.java)
 
         // Set the viewmodel for databinding
-        binding.gameViewModel = viewModel
+        binding.scoreViewModel = viewModel
 
         showUserByName()
         showBestUsers()

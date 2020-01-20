@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
+    <data>
+        <variable
+            name="RoomViewModel"
+            type="com.example.spaceinc.fragments.creationRoom.CreationRoomViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,7 +17,7 @@
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/allRooms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aucune salle ouverte"
@@ -27,7 +31,7 @@
             android:layout_marginTop="50dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/allRooms"
             tools:layout_editor_absoluteX="30dp">
 
             <Button
