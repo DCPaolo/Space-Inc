@@ -50,21 +50,14 @@ class creationRoomFragment : Fragment() {
 
     /** Display all rooms **/
     private fun showAllRooms() {
+
         viewModel.getAllRooms.observe(this, Observer {
 
-            for (room in it) {
-
-
-
-
+            it.all?.forEach {room ->
+                allRooms.append("room : ${room} \n")
+                Log.i("test", room.toString())
             }
 
-
-            val listRoom: List<Room> = it
-            for(item in listRoom){
-                allRooms.append("room : $item \n")
-                Log.i("test", item.toString())
-            }
         })
     }
 

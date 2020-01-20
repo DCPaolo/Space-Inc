@@ -16,5 +16,5 @@ data class Room(
 )
 
 data class RoomList (
-    private val all: List<Room>? = null
+    val all: List<Room>? = null
 )
