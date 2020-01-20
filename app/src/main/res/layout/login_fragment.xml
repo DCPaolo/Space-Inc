@@ -30,7 +30,7 @@
                 android:id="@+id/pseudo_label"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Pseudo :"
+                android:text="@string/pseudo_label"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
-            android:text="Connexion"
+            android:text="@string/connexion_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_layout" />

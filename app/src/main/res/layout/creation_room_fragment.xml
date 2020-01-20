@@ -39,14 +39,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Nouvelle Salle" />
+                android:text="@string/new_room_button" />
 
             <Button
                 android:id="@+id/score_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Score" />
+                android:text="@string/score_button" />
 
 
         </LinearLayout>

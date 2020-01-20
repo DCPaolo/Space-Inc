@@ -3,4 +3,10 @@
     <string name="you_win">You win</string>
     <string name="waiting_room">Waiting Room</string>
     <string name="ready">Ready</string>
+    <string name="score_button">Score</string>
+    <string name="new_room_button">Nouvelle Salle</string>
+    <string name="pseudo_label">Pseudo :</string>
+    <string name="connexion_button">Connexion</string>
+    <string name="score_title">SCORE</string>
+    <string name="fail_message">You fail !</string>
 </resources>
