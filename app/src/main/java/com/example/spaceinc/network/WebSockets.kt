@@ -2,6 +2,11 @@ package com.example.spaceinc.network
 
 
 import android.util.Log
+import com.example.spaceinc.model.Event
+import com.example.spaceinc.model.EventType
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.*
 
 
@@ -9,18 +14,15 @@ import okhttp3.*
 class WebSockets : WebSocketListener() {
 
 
-    var websocket : WebSocket? = null
+    var websocket : WebSocket
 
 
     init {
-
         val request =  Request.Builder().url("ws://vps769278.ovh.net:8081/ws").build()
         websocket = OkHttpClient().newWebSocket(request,this)
-        joinRoom("Test", 109)
-
-
+        joinRoom("azerty", 109)
+        //startGame()
     }
-
 
     override fun onMessage(webSocket: WebSocket, text: String) {
         Log.i("Socket",text)
@@ -40,4 +42,23 @@ class WebSockets : WebSocketListener() {
         websocket = OkHttpClient().newWebSocket(request,this)
     }
 
+
+    private fun startGame(){
+        var moshi = Moshi.Builder()
+            .add(
+                PolymorphicJsonAdapterFactory.of(Event::class.java,"type")
+                    .withSubtype(Event.Ready::class.java, EventType.READY.name)
+            )
+
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+
+        val eventParser = moshi.adapter<Event>(Event::class.java)
+
+        eventParser.fromJson("""{"type":"READY", "value":true}""")
+
+
+        //websocket.(moshi)
+    }
 }
