@@ -20,7 +20,7 @@
 
     <data>
         <variable
-            name="gameViewModel"
+            name="scoreViewModel"
             type="com.example.spaceinc.fragments.score.ScoreViewModel" />
     </data>
 
