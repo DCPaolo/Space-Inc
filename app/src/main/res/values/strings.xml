@@ -9,4 +9,7 @@
     <string name="connexion_button">Connexion</string>
     <string name="score_title">SCORE</string>
     <string name="fail_message">You fail !</string>
+    <string name="no_room_active">Aucune salle ouverte pour le moment...</string>
+    <string name="new_room_popup_button">Créer</string>
+    <string name="new_room_name_placeholder">Nom de la salle</string>
 </resources>
