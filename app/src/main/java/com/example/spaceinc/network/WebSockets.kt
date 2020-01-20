@@ -14,7 +14,7 @@ class WebSockets : WebSocketListener() {
 
     init {
 
-        val request =  Request.Builder().url("ws://vps769278.ovh.net:8081/ws").build()
+        val request =  Request.Builder().url("ws://vps769278.ovh.net:8081").build()
         websocket = OkHttpClient().newWebSocket(request,this)
 
 
