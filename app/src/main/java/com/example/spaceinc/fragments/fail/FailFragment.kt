@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.FailFragmentBinding
 import kotlinx.android.synthetic.main.fail_fragment.*
@@ -49,6 +50,15 @@ class FailFragment : Fragment() {
 
             }
         })
+    }
+
+
+
+    private fun redirectToWaitingRoom() {
+
+        val action = FailFragmentDirections.actionFailFragmentToCreationRoomFragment()
+        NavHostFragment.findNavController(this).navigate(action)
+
     }
 
 }

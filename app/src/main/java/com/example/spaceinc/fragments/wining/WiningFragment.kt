@@ -8,11 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import com.example.spaceinc.R
 
 import kotlinx.android.synthetic.main.wining_fragment.*
 import com.example.spaceinc.databinding.CreationRoomFragmentBinding
 import com.example.spaceinc.databinding.WiningFragmentBinding
+import com.example.spaceinc.fragments.creationRoom.creationRoomFragment
+import com.example.spaceinc.fragments.creationRoom.creationRoomFragmentDirections
 
 
 class WiningFragment : Fragment(){
@@ -53,6 +56,13 @@ class WiningFragment : Fragment(){
 
             }
         })
+    }
+
+    private fun redirectToWaitingRoom() {
+//
+        val action = WiningFragmentDirections.actionWiningFragmentToCreationRoomFragment()
+        NavHostFragment.findNavController(this).navigate(action)
+//        }
     }
 
 

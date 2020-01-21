@@ -118,6 +118,7 @@ class creationRoomFragment : Fragment() {
                 var newRoom = Button(context)
                 newRoom.text = room.name
                 newRoom.tag = "join_room"
+                newRoom.setBackgroundResource(R.drawable.button_marge)
                 newRoom.setOnClickListener {
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
                     websocket.joinRoom(newRoom.text.toString(), 55)

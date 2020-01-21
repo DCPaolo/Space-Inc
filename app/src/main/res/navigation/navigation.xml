@@ -21,8 +21,8 @@
         <action
             android:id="@+id/action_login_to_creationroom"
             app:destination="@+id/creationRoomFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
             app:launchSingleTop="true"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
@@ -36,22 +36,42 @@
         <action
             android:id="@+id/action_creationRoomFragment_to_scoreFragment"
             app:destination="@id/scoreFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/creationRoomFragment" />
         <action
             android:id="@+id/action_creationRoomFragment_to_waitingRoomFragment"
             app:destination="@id/waitingRoomFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/creationRoomFragment" />
     </fragment>
     <fragment
-        android:id="@+id/winingFragment"
+        android:id="@+id/creationwiningFragment"
         android:name="com.example.spaceinc.fragments.wining.WiningFragment"
-        android:label="WiningFragment" />
+        android:label="WiningFragment" >
+        <action
+            android:id="@+id/action_winingFragment_to_creationRoomFragment"
+            app:destination="@id/creationRoomFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/creationwiningFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/failFragment"
+        android:name="com.example.spaceinc.fragments.fail.FailFragment"
+        android:label="FailFragment" >
+        <action
+            android:id="@+id/action_failFragment_to_creationRoomFragment"
+            app:destination="@id/creationRoomFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/failFragment" />
+    </fragment>
 </navigation>
