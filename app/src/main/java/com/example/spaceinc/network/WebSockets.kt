@@ -4,6 +4,7 @@ package com.example.spaceinc.network
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.spaceinc.MainActivityViewModel
 import com.example.spaceinc.model.Event
 import com.example.spaceinc.model.Event.*
 import com.example.spaceinc.model.EventType
@@ -48,6 +49,8 @@ class WebSockets : WebSocketListener() {
     fun joinRoom(roomName:String, userID:Int){
         val request =  Request.Builder().url("ws://vps769278.ovh.net:8081/ws/join/$roomName/$userID").build()
         websocket = OkHttpClient().newWebSocket(request,this)
+
+
     }
 
 
