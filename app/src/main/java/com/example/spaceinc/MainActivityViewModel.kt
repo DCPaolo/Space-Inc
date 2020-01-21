@@ -17,6 +17,4 @@ class MainActivityViewModel : ViewModel() {
         val allRooms = client.getRooms()
         emit(allRooms)
     }
-
-
 }

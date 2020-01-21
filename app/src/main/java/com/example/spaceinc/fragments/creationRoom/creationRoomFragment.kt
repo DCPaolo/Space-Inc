@@ -43,14 +43,11 @@ class creationRoomFragment : Fragment() {
         // Set the viewmodel for databinding
         binding.roomViewModel = viewModel
 
-        //websocket.joinRoom("azerty", 55)
-
         viewModel.websocket.messageSocket.observe(this, Observer {
             Log.i("test",it.toString())
         })
 
         showAllRooms()
-
 
         return binding.root
     }
@@ -69,24 +66,20 @@ class creationRoomFragment : Fragment() {
             popUpCreationRoom()
         }
 
-
-//        new_room_button.setOnClickListener{
-//            websocket.joinRoom("azerty", 55)
-//        }
-
     }
 
+    // To create a new room
     private fun popUpCreationRoom() {
 
         val layoutPopUp = LayoutInflater.from(context).inflate(R.layout.create_room_popup, null)
+
+        // Creation popUp
         val popUpAddRoom = AlertDialog.Builder(context)
 
         popUpAddRoom.setPositiveButton("Create", object : DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 val editText = layoutPopUp.findViewById<EditText>(R.id.new_room_name)
-                // TODO : need to fix problem new_room_name
                 val roomName = editText?.text.toString()
-
 
                 //request websocket to join this room with id user
                 viewModel.websocket.joinRoom(roomName, 55)
@@ -99,8 +92,6 @@ class creationRoomFragment : Fragment() {
         popUpAddRoom.setTitle("Nom de la salle")
         popUpAddRoom.setView(layoutPopUp)
         popUpAddRoom.show()
-
-
     }
 
     /** Display all rooms **/
@@ -119,16 +110,12 @@ class creationRoomFragment : Fragment() {
                 var newRoom = Button(context)
                 newRoom.text = room.name
                 newRoom.tag = "join_room"
-<<<<<<< HEAD
-=======
                 newRoom.setBackgroundResource(R.drawable.button_marge)
 
->>>>>>> bdedd6d... finished UI / UX
                 newRoom.setOnClickListener {
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
                     viewModel.websocket.joinRoom(newRoom.text.toString(), 55)
                     redirectToWaitingRoom()
-
                 }
 
                 allRooms.addView(newRoom)
@@ -146,8 +133,6 @@ class creationRoomFragment : Fragment() {
 
     private fun redirectToWaitingRoom() {
 //        if (findNavController().currentDestination?.id == R.id.waitingRoomFragment) {
-//        Log.i("test", findNavController().currentDestination?.id.toString())
-//        Log.i("test", R.id.waitingRoomFragment.toString())
             val action = creationRoomFragmentDirections.actionCreationRoomFragmentToWaitingRoomFragment()
             NavHostFragment.findNavController(this).navigate(action)
 //        }

@@ -1,6 +1,7 @@
 package com.example.spaceinc.fragments.waitingRoom
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import com.example.spaceinc.MainActivityViewModel
 import com.example.spaceinc.R
 import com.example.spaceinc.databinding.WaitingRoomFragmentBinding
+import com.example.spaceinc.fragments.login.LoginFragmentDirections
 import com.example.spaceinc.network.WebSockets
 import kotlinx.android.synthetic.main.waiting_room_fragment.*
 
@@ -35,6 +38,7 @@ class WaitingRoomFragment : Fragment() {
 
         viewModel.websocket.messageSocket.observe(this, Observer {
             Log.i("test",it.toString())
+            logGame.append(it.toString() + "\n \n")
         })
 
         return binding.root
@@ -47,8 +51,15 @@ class WaitingRoomFragment : Fragment() {
             viewModel.websocket.startGame()
         }
 
-
-
+        redirectToFail()
     }
 
+    private fun redirectToFail() {
+        val handle = Handler()
+        handle.postDelayed({
+            val action = WaitingRoomFragmentDirections.actionWaitingRoomFragmentToFailFragment()
+
+            NavHostFragment.findNavController(this).navigate(action)
+        }, 30000)
+    }
 }

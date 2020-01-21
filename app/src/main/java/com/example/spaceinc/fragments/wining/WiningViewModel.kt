@@ -11,8 +11,6 @@ class WiningViewModel : ViewModel(){
 
     var client: WebService = RetrofitClient.webservice
 
-
-
     val getUsersScore = liveData(Dispatchers.IO) {
         val allUsers = client.getAllUsers()
         var allUsersSorted = allUsers.sortedWith(compareByDescending<User> { it.score }

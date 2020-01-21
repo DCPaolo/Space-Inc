@@ -15,21 +15,10 @@ import okhttp3.*
 
 class WebSockets : WebSocketListener() {
 
-
     lateinit var websocket : WebSocket
-
 
     private val _messageSocket = MutableLiveData<String>()
     val messageSocket: LiveData<String> = _messageSocket
-
-//    init {
-
-//        val request =  Request.Builder().url("ws://vps769278.ovh.net:8081/ws").build()
-//        websocket = OkHttpClient().newWebSocket(request,this)
-////        joinRoom("azerty", 109)
-//        startGame()
-
-//    }
 
     override fun onMessage(webSocket: WebSocket, text: String) {
         Log.i("Socket",text)
@@ -49,13 +38,10 @@ class WebSockets : WebSocketListener() {
     fun joinRoom(roomName:String, userID:Int){
         val request =  Request.Builder().url("ws://vps769278.ovh.net:8081/ws/join/$roomName/$userID").build()
         websocket = OkHttpClient().newWebSocket(request,this)
-
-
     }
 
 
     fun startGame(){
-
         var readyJson : String = "{\"type\":\"READY\", \"value\":true}"
 
         var moshi = Moshi.Builder()
@@ -63,7 +49,6 @@ class WebSockets : WebSocketListener() {
                 PolymorphicJsonAdapterFactory.of(Event::class.java,"type")
                     .withSubtype(Ready::class.java, EventType.READY.name)
             )
-
             .add(KotlinJsonAdapterFactory())
             .build()
 
