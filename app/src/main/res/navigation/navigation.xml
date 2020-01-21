@@ -15,7 +15,9 @@
         android:label="waitingRoomFragment" >
         <action
             android:id="@+id/action_waitingRoomFragment_to_failFragment"
+
             app:destination="@id/failFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

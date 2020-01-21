@@ -38,7 +38,9 @@ class WaitingRoomFragment : Fragment() {
 
         viewModel.websocket.messageSocket.observe(this, Observer {
             Log.i("test",it.toString())
+
             logGame.append(it.toString() + "\n \n")
+
         })
 
         return binding.root
@@ -51,6 +53,7 @@ class WaitingRoomFragment : Fragment() {
             viewModel.websocket.startGame()
         }
 
+
         redirectToFail()
     }
 
@@ -62,4 +65,5 @@ class WaitingRoomFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(action)
         }, 30000)
     }
+
 }

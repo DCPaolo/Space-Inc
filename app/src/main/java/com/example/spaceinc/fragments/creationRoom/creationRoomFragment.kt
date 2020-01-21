@@ -31,6 +31,7 @@ class creationRoomFragment : Fragment() {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var binding: CreationRoomFragmentBinding
 
+    private val userId : Int = (0..200).random()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -46,6 +47,7 @@ class creationRoomFragment : Fragment() {
         viewModel.websocket.messageSocket.observe(this, Observer {
             Log.i("test",it.toString())
         })
+
 
         showAllRooms()
 
@@ -65,7 +67,6 @@ class creationRoomFragment : Fragment() {
         add_room_button.setOnClickListener {
             popUpCreationRoom()
         }
-
     }
 
     // To create a new room
@@ -82,7 +83,7 @@ class creationRoomFragment : Fragment() {
                 val roomName = editText?.text.toString()
 
                 //request websocket to join this room with id user
-                viewModel.websocket.joinRoom(roomName, 55)
+                viewModel.websocket.joinRoom(roomName,  userId)
                 redirectToWaitingRoom()
                 dialog?.dismiss()
             }
@@ -96,7 +97,6 @@ class creationRoomFragment : Fragment() {
 
     /** Display all rooms **/
     private fun showAllRooms() {
-
 
         viewModel.getAllRooms.observe(this, Observer {
 
@@ -114,7 +114,7 @@ class creationRoomFragment : Fragment() {
 
                 newRoom.setOnClickListener {
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
-                    viewModel.websocket.joinRoom(newRoom.text.toString(), 55)
+                    viewModel.websocket.joinRoom(newRoom.text.toString(), userId)
                     redirectToWaitingRoom()
                 }
 
@@ -133,6 +133,7 @@ class creationRoomFragment : Fragment() {
 
     private fun redirectToWaitingRoom() {
 //        if (findNavController().currentDestination?.id == R.id.waitingRoomFragment) {
+
             val action = creationRoomFragmentDirections.actionCreationRoomFragmentToWaitingRoomFragment()
             NavHostFragment.findNavController(this).navigate(action)
 //        }

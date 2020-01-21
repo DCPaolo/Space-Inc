@@ -42,6 +42,9 @@ class LoginFragment : Fragment() {
             }
         })
 
+
+
+
         return binding.root
     }
 
@@ -51,7 +54,6 @@ class LoginFragment : Fragment() {
             viewModel.onClickConnexion(login.text.toString())
         }
     }
-
 
     override fun onStart() {
         super.onStart()
