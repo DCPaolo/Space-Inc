@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         tools:context=".MainActivity">
 
         <TextView
@@ -22,29 +23,35 @@
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
             android:text="@string/score_title"
-            android:textSize="20sp"
+            android:textColor="#F8FFFFFF"
+            android:textSize="36sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/user_score"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
+            android:layout_width="380dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button_background"
             android:gravity="center_horizontal"
-            android:textSize="20sp"
+            android:padding="10dp"
+            android:textColor="#D3292929"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_score"
             tools:text="User : Test" />
 
         <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="150dp"
+            android:layout_width="378dp"
+            android:layout_height="568dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_background"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_score">
@@ -54,7 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
-                android:textSize="20sp"
+                android:textColor="#C30C0C0C"
+                android:textSize="24sp"
                 tools:text="List of all users" />
 
         </androidx.core.widget.NestedScrollView>

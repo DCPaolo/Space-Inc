@@ -40,8 +40,10 @@ class creationRoomFragment : Fragment() {
 
         showAllRooms()
 
+
         return binding.root
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -91,6 +93,7 @@ class creationRoomFragment : Fragment() {
                 var newRoom = Button(context)
                 newRoom.text = room.name
                 newRoom.tag = "join_room"
+                newRoom.setBackgroundResource(R.drawable.button_marge)
 
                 newRoom.setOnClickListener {
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
