@@ -10,9 +10,9 @@
         android:name="com.example.spaceinc.fragments.score.ScoreFragment"
         android:label="ScoreFragment" />
     <fragment
-        android:id="@+id/waittingRoomFragment"
+        android:id="@+id/waitingRoomFragment"
         android:name="com.example.spaceinc.fragments.waitingRoom.WaitingRoomFragment"
-        android:label="WaittingRoomFragment" />
+        android:label="waitingRoomFragment" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.spaceinc.fragments.login.LoginFragment"
@@ -41,5 +41,17 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/creationRoomFragment" />
+        <action
+            android:id="@+id/action_creationRoomFragment_to_waitingRoomFragment"
+            app:destination="@id/waitingRoomFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/creationRoomFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/winingFragment"
+        android:name="com.example.spaceinc.fragments.wining.WiningFragment"
+        android:label="WiningFragment" />
 </navigation>

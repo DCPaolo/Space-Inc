@@ -26,7 +26,7 @@ class ScoreFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(ScoreViewModel::class.java)
 
         // Set the viewmodel for databinding
-        binding.gameViewModel = viewModel
+        binding.scoreViewModel = viewModel
 
         showUserByName()
         showBestUsers()
@@ -38,14 +38,14 @@ class ScoreFragment : Fragment() {
     /** Display id of the user connected **/
     private fun showUserById() {
         viewModel.getUserId.observe(this, Observer {
-            firstTextView.text = "User connected : " + it.id
+            user_score.text = "User connected : " + it.id
         })
     }
 
     /** Display the name of the user connected **/
     private fun showUserByName() {
         viewModel.getUserName.observe(this, Observer {
-            firstTextView.text = "User connected : " + it.name
+            user_score.text = "User connected : " + it.name
         })
     }
 

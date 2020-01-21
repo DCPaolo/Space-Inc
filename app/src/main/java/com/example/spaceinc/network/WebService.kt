@@ -1,7 +1,10 @@
 package com.example.spaceinc.network
 
+import com.example.spaceinc.model.Room
+import com.example.spaceinc.model.RoomList
 import com.example.spaceinc.model.User
 import com.example.spaceinc.model.UserPost
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -15,6 +18,9 @@ interface WebService {
 
     @GET("/api/users")
     suspend fun getAllUsers(): List<User>
+
+    @GET("/show")
+    suspend fun getRooms(): RoomList
 
     @GET("/api/user/find/{name}")
     suspend fun getUserByName(@Path(value = "name") userName: String): User
