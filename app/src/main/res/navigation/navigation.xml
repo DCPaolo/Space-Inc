@@ -12,7 +12,12 @@
     <fragment
         android:id="@+id/waitingRoomFragment"
         android:name="com.example.spaceinc.fragments.waitingRoom.WaitingRoomFragment"
-        android:label="waitingRoomFragment" />
+        android:label="waitingRoomFragment" >
+        <action
+            android:id="@+id/action_waitingRoomFragment_to_failFragment"
+            app:destination="@id/failFragment"
+            app:popUpTo="@+id/creationRoomFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.spaceinc.fragments.login.LoginFragment"
@@ -54,4 +59,8 @@
         android:id="@+id/winingFragment"
         android:name="com.example.spaceinc.fragments.wining.WiningFragment"
         android:label="WiningFragment" />
+    <fragment
+        android:id="@+id/failFragment"
+        android:name="com.example.spaceinc.fragments.fail.FailFragment"
+        android:label="FailFragment" />
 </navigation>

@@ -31,6 +31,7 @@ class creationRoomFragment : Fragment() {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var binding: CreationRoomFragmentBinding
 
+    private val userId : Int = (0..200).random()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -43,11 +44,11 @@ class creationRoomFragment : Fragment() {
         // Set the viewmodel for databinding
         binding.roomViewModel = viewModel
 
-        //websocket.joinRoom("azerty", 55)
 
         viewModel.websocket.messageSocket.observe(this, Observer {
             Log.i("test",it.toString())
         })
+
 
         showAllRooms()
 
@@ -66,12 +67,6 @@ class creationRoomFragment : Fragment() {
         add_room_button.setOnClickListener {
             popUpCreationRoom()
         }
-
-
-//        new_room_button.setOnClickListener{
-//            websocket.joinRoom("azerty", 55)
-//        }
-
     }
 
     private fun popUpCreationRoom() {
@@ -87,7 +82,7 @@ class creationRoomFragment : Fragment() {
 
 
                 //request websocket to join this room with id user
-                viewModel.websocket.joinRoom(roomName, 55)
+                viewModel.websocket.joinRoom(roomName,  userId)
                 redirectToWaitingRoom()
                 dialog?.dismiss()
             }
@@ -104,7 +99,6 @@ class creationRoomFragment : Fragment() {
     /** Display all rooms **/
     private fun showAllRooms() {
 
-
         viewModel.getAllRooms.observe(this, Observer {
 
             if (it.all?.isEmpty()!!) {
@@ -119,7 +113,7 @@ class creationRoomFragment : Fragment() {
                 newRoom.tag = "join_room"
                 newRoom.setOnClickListener {
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
-                    viewModel.websocket.joinRoom(newRoom.text.toString(), 55)
+                    viewModel.websocket.joinRoom(newRoom.text.toString(), userId)
                     redirectToWaitingRoom()
 
                 }
@@ -138,9 +132,6 @@ class creationRoomFragment : Fragment() {
     }
 
     private fun redirectToWaitingRoom() {
-//        if (findNavController().currentDestination?.id == R.id.waitingRoomFragment) {
-//        Log.i("test", findNavController().currentDestination?.id.toString())
-//        Log.i("test", R.id.waitingRoomFragment.toString())
             val action = creationRoomFragmentDirections.actionCreationRoomFragmentToWaitingRoomFragment()
             NavHostFragment.findNavController(this).navigate(action)
 //        }
