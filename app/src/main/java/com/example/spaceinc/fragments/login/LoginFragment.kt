@@ -57,6 +57,8 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        // add stars animations
         stars.onStart()
     }
 

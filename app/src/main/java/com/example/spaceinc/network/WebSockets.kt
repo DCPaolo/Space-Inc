@@ -4,6 +4,7 @@ package com.example.spaceinc.network
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.spaceinc.MainActivityViewModel
 import com.example.spaceinc.model.Event
 import com.example.spaceinc.model.Event.*
 import com.example.spaceinc.model.EventType
@@ -14,21 +15,10 @@ import okhttp3.*
 
 class WebSockets : WebSocketListener() {
 
-
     lateinit var websocket : WebSocket
-
 
     private val _messageSocket = MutableLiveData<String>()
     val messageSocket: LiveData<String> = _messageSocket
-
-//    init {
-
-//        val request =  Request.Builder().url("ws://vps769278.ovh.net:8081/ws").build()
-//        websocket = OkHttpClient().newWebSocket(request,this)
-////        joinRoom("azerty", 109)
-//        startGame()
-
-//    }
 
     override fun onMessage(webSocket: WebSocket, text: String) {
         Log.i("Socket",text)
@@ -52,7 +42,6 @@ class WebSockets : WebSocketListener() {
 
 
     fun startGame(){
-
         var readyJson : String = "{\"type\":\"READY\", \"value\":true}"
 
         var moshi = Moshi.Builder()
@@ -60,7 +49,6 @@ class WebSockets : WebSocketListener() {
                 PolymorphicJsonAdapterFactory.of(Event::class.java,"type")
                     .withSubtype(Ready::class.java, EventType.READY.name)
             )
-
             .add(KotlinJsonAdapterFactory())
             .build()
 

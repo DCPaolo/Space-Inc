@@ -6,7 +6,7 @@
     <data>
         <variable
             name="RoomViewModel"
-            type="com.example.spaceinc.fragments.creationRoom.CreationRoomViewModel" />
+            type="com.example.spaceinc.MainActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

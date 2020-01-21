@@ -34,14 +34,10 @@ class WiningFragment : Fragment(){
         // Set the viewmodel for databinding
         binding.winingGameViewModel = viewModel
 
-
         showBestUsers()
 
         return binding.root
     }
-
-
-
 
     /** Display all user sort by score **/
     private fun showBestUsers() {

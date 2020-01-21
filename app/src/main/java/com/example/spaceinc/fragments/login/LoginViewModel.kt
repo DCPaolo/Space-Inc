@@ -31,9 +31,7 @@ class LoginViewModel : ViewModel() {
         _labelUser?.value = ""
     }
 
-    /**
-     * add new user in async task
-     */
+    /** add new user in async task  */
     fun onClickConnexion(loginText : String) {
 
         if (loginText.isNotEmpty()) {

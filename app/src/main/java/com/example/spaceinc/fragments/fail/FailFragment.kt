@@ -28,7 +28,6 @@ class FailFragment : Fragment() {
         // Set the viewmodel for databinding
         binding.failGameViewModel = viewModel
 
-
         showBestUsers()
 
         return binding.root
