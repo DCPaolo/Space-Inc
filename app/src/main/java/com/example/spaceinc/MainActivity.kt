@@ -12,6 +12,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+<<<<<<< HEAD
+=======
+        WebSockets()
+
+        
+
+>>>>>>> bdedd6d... finished UI / UX
     }
 
 }

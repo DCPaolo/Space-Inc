@@ -42,6 +42,9 @@ class LoginFragment : Fragment() {
             }
         })
 
+
+
+
         return binding.root
     }
 
@@ -50,6 +53,11 @@ class LoginFragment : Fragment() {
         connexion_button.setOnClickListener {
             viewModel.onClickConnexion(login.text.toString())
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        stars.onStart()
     }
 
     private fun redirectToCreationRoom() {

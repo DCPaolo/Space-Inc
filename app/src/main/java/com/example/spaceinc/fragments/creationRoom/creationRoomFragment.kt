@@ -51,8 +51,10 @@ class creationRoomFragment : Fragment() {
 
         showAllRooms()
 
+
         return binding.root
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
@@ -117,6 +119,11 @@ class creationRoomFragment : Fragment() {
                 var newRoom = Button(context)
                 newRoom.text = room.name
                 newRoom.tag = "join_room"
+<<<<<<< HEAD
+=======
+                newRoom.setBackgroundResource(R.drawable.button_marge)
+
+>>>>>>> bdedd6d... finished UI / UX
                 newRoom.setOnClickListener {
                     Toast.makeText(context,room.name.toString(),Toast.LENGTH_SHORT).show()
                     viewModel.websocket.joinRoom(newRoom.text.toString(), 55)
