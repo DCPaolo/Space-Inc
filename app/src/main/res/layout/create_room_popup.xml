@@ -13,9 +13,4 @@
         android:hint="@string/new_room_name_placeholder"
         android:layout_marginHorizontal="20dp"/>
 
-    <Button
-        android:id="@+id/new_room_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/new_room_popup_button"/>
 </LinearLayout>
