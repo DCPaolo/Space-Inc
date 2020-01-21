@@ -77,7 +77,7 @@ class creationRoomFragment : Fragment() {
         // Creation popUp
         val popUpAddRoom = AlertDialog.Builder(context)
 
-        popUpAddRoom.setPositiveButton("Create", object : DialogInterface.OnClickListener{
+        popUpAddRoom.setPositiveButton("Créer", object : DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 val editText = layoutPopUp.findViewById<EditText>(R.id.new_room_name)
                 val roomName = editText?.text.toString()
